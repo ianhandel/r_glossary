@@ -1,4 +1,4 @@
-# R gloassary
+# R glossary
 
 For UoE RDSVS taught MSc programmes etc
 
