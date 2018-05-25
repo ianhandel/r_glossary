@@ -21,7 +21,7 @@ Where possible we'll include examples that you can run with R's built in data fi
 
 We'll show that examples can be run by <span style="color:red"> how can we show that they are runnable?</span>
 
-
+We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online and <span style="color:red">Hadley's ggplot book or maybe the ggplot2 website would be better</span>. 
 
 # Basics
 
@@ -97,11 +97,12 @@ The easiest way, at first, to import data is to use RStudio's helpers in the env
 ### read_excel
 ___Import an Excel spreadsheet___
 
-This function needs the '''readxl''' library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, inforamtion about column names and types.
+This function needs the '''readxl''' library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, information about column names and types and codes for missing data. The following code reads in the "main-results" sheet from a spreadsheet called "my_excel_spreadsheet.xlsx" and treats "*" as issing data. Note that the file will need to be in the same folder/directory as your project. If not you'll need to include the "path" to the file in the filename section. 
 
 ```{r, eval = FALSE}
 mydata <- read_excel("my_excel_spreadsheet.xlsx",
-                     sheet = "main-results")
+                     sheet = "main-results",
+                     na = "*")
 ```
 
 
@@ -118,6 +119,29 @@ mydata <- mydata %>%
          better = silly_long_name_thats_a_pain_to_type)
 ```
 
+### select()
+___select columns and change column order___
+
+The ```select()``` verb lets us choose or drop columns in a dataframe and change their order.
+
+To make a new dataset using just the model, year and city fuel consumption columns from the mpg dataset (from the tidyverse packages) we can do this (we'll assume you've loded the tidyverse already with ```library(tidyverse)```)...
+
+```{r}
+new_data <- mpg %>% 
+  select(model, year, cty)
+```
+
+Check it worked...
+
+<span style="color:red">Is this too verbose???</span>
+
+```{r}
+new_data
+```
+
+
+
+See [here in R4DS](http://r4ds.had.co.nz/transform.html#select-columns-with-select) for more details.
 
 
 # Data manipulation

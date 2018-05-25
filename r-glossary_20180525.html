@@ -250,6 +250,7 @@ div.tocify {
 <p><span style="color:red">Some introduction and use text</span></p>
 <p>Where possible we’ll include examples that you can run with R’s built in data files.</p>
 <p>We’ll show that examples can be run by <span style="color:red"> how can we show that they are runnable?</span></p>
+<p>We’ll include links to further resources where approporiate. Including <a href="http://r4ds.had.co.nz">R for Data Science</a> which is available online and <span style="color:red">Hadley’s ggplot book or maybe the ggplot2 website would be better</span>.</p>
 </div>
 <div id="basics" class="section level1">
 <h1>Basics</h1>
@@ -301,9 +302,10 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <div id="read_excel" class="section level3">
 <h3>read_excel</h3>
 <p><strong><em>Import an Excel spreadsheet</em></strong></p>
-<p>This function needs the ‘’’readxl’’’ library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, inforamtion about column names and types.</p>
+<p>This function needs the ‘’’readxl’’’ library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, information about column names and types and codes for missing data. The following code reads in the “main-results” sheet from a spreadsheet called “my_excel_spreadsheet.xlsx” and treats “*&quot; as issing data. Note that the file will need to be in the same folder/directory as your project. If not you’ll need to include the “path” to the file in the filename section.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;my_excel_spreadsheet.xlsx&quot;</span>,
-                     <span class="dt">sheet =</span> <span class="st">&quot;main-results&quot;</span>)</code></pre></div>
+                     <span class="dt">sheet =</span> <span class="st">&quot;main-results&quot;</span>,
+                     <span class="dt">na =</span> <span class="st">&quot;*&quot;</span>)</code></pre></div>
 </div>
 </div>
 <div id="data-tidying" class="section level1">
@@ -315,6 +317,32 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span>mydata <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">rename</span>(<span class="dt">glucose =</span> <span class="st">`</span><span class="dt">Glucose level(mg/L</span><span class="st">`</span>,
          <span class="dt">better =</span> silly_long_name_thats_a_pain_to_type)</code></pre></div>
+</div>
+<div id="select" class="section level3">
+<h3>select()</h3>
+<p><strong><em>select columns and change column order</em></strong></p>
+<p>The <code>select()</code> verb lets us choose or drop columns in a dataframe and change their order.</p>
+<p>To make a new dataset using just the model, year and city fuel consumption columns from the mpg dataset (from the tidyverse packages) we can do this (we’ll assume you’ve loded the tidyverse already with <code>library(tidyverse)</code>)…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_data &lt;-<span class="st"> </span>mpg <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(model, year, cty)</code></pre></div>
+<p>Check it worked…</p>
+<p><span style="color:red">Is this too verbose???</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">new_data</code></pre></div>
+<pre><code># A tibble: 234 x 3
+   model       year   cty
+   &lt;chr&gt;      &lt;int&gt; &lt;int&gt;
+ 1 a4          1999    18
+ 2 a4          1999    21
+ 3 a4          2008    20
+ 4 a4          2008    21
+ 5 a4          1999    16
+ 6 a4          1999    18
+ 7 a4          2008    18
+ 8 a4 quattro  1999    18
+ 9 a4 quattro  1999    16
+10 a4 quattro  2008    20
+# ... with 224 more rows</code></pre>
+<p>See <a href="http://r4ds.had.co.nz/transform.html#select-columns-with-select">here in R4DS</a> for more details.</p>
 </div>
 </div>
 <div id="data-manipulation" class="section level1">
