@@ -15,6 +15,13 @@ knitr::opts_chunk$set(echo = TRUE, comment = "")
 ```
 
 # Introduction
+<span style="color:red">Some introduction and use text</span>
+
+Where possible we'll include examples that you can run with R's built in data files.
+
+We'll show that examples can be run by <span style="color:red"> how can we show that they are runnable?</span>
+
+
 
 # Basics
 
@@ -99,6 +106,19 @@ mydata <- read_excel("my_excel_spreadsheet.xlsx",
 
 
 # Data tidying
+
+### rename()
+___rename colums in a data.frame___
+
+Imported data may have column names that are overly long, messy or contain characters that upset R. You can refer to 'upsetting' columns by putting backticks (`) around them but it's neater to rename columns to make them sensible. So if a data.frame, ```mydata``` had columns including ```Glucose level(mg/L)``` and ```silly_long_name_thats_a_pain_to_type``` we can rename them like this...
+
+```{r, eval=FALSE}
+mydata <- mydata %>% 
+  rename(glucose = `Glucose level(mg/L`,
+         better = silly_long_name_thats_a_pain_to_type)
+```
+
+
 
 # Data manipulation
 

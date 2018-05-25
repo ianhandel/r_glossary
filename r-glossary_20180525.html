@@ -247,6 +247,9 @@ div.tocify {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
+<p><span style="color:red">Some introduction and use text</span></p>
+<p>Where possible we’ll include examples that you can run with R’s built in data files.</p>
+<p>We’ll show that examples can be run by <span style="color:red"> how can we show that they are runnable?</span></p>
 </div>
 <div id="basics" class="section level1">
 <h1>Basics</h1>
@@ -305,6 +308,14 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 </div>
 <div id="data-tidying" class="section level1">
 <h1>Data tidying</h1>
+<div id="rename" class="section level3">
+<h3>rename()</h3>
+<p><strong><em>rename colums in a data.frame</em></strong></p>
+<p>Imported data may have column names that are overly long, messy or contain characters that upset R. You can refer to ‘upsetting’ columns by putting backticks (`) around them but it’s neater to rename columns to make them sensible. So if a data.frame, <code>mydata</code> had columns including <code>Glucose level(mg/L)</code> and <code>silly_long_name_thats_a_pain_to_type</code> we can rename them like this…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span>mydata <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">rename</span>(<span class="dt">glucose =</span> <span class="st">`</span><span class="dt">Glucose level(mg/L</span><span class="st">`</span>,
+         <span class="dt">better =</span> silly_long_name_thats_a_pain_to_type)</code></pre></div>
+</div>
 </div>
 <div id="data-manipulation" class="section level1">
 <h1>Data manipulation</h1>
