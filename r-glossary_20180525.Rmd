@@ -106,7 +106,7 @@ mydata <- read_excel("my_excel_spreadsheet.xlsx",
 ```
 
 
-# Data tidying
+# Data tidying and manipulation
 
 ### rename()
 ___rename colums in a data.frame___
@@ -143,12 +143,55 @@ new_data
 
 See [here in R4DS](http://r4ds.had.co.nz/transform.html#select-columns-with-select) for more details.
 
+# Summary functions
 
-# Data manipulation
+### length
+___returns the length of an R object___
+
+Note - it includes missing values...
+
+```{r}
+ages <- c(1, 4, 1, 6, 3)
+length(ages)
+
+heights = c(12, 15, 17, NA, NA, 19)
+length(heights)
+```
+
+### sum()
+___calculate the total of a numeric vector___
+
+```sum()``` returns the arithmetic sum of its argument(s). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the total length of R's built in Rivers dataset...
+
+```{r}
+sum(rivers)
+```
+
+And if there's missing data...
+
+```{r}
+nums <- c(1, 6, 3, NA, 6)
+sum(nums)
+sum(nums, na.rm = TRUE)
+```
+
+
+
+
+To count only non-missing data use ```sum(!is.na())```...
+
+```{r}
+heights = c(12, 15, 17, NA, NA, 19)
+sum(!is.na(heights))
+```
+
+The ```!is.na()``` is counted as ```1``` for every value that isn't missing and ```sum``` adds them up.
+
+
+
+# Data Summary
 
 # Plotting
-
-# summary statistics
 
 # Statistical tests
 

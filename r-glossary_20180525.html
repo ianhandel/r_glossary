@@ -308,8 +308,8 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
                      <span class="dt">na =</span> <span class="st">&quot;*&quot;</span>)</code></pre></div>
 </div>
 </div>
-<div id="data-tidying" class="section level1">
-<h1>Data tidying</h1>
+<div id="data-tidying-and-manipulation" class="section level1">
+<h1>Data tidying and manipulation</h1>
 <div id="rename" class="section level3">
 <h3>rename()</h3>
 <p><strong><em>rename colums in a data.frame</em></strong></p>
@@ -345,14 +345,43 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <p>See <a href="http://r4ds.had.co.nz/transform.html#select-columns-with-select">here in R4DS</a> for more details.</p>
 </div>
 </div>
-<div id="data-manipulation" class="section level1">
-<h1>Data manipulation</h1>
+<div id="summary-functions" class="section level1">
+<h1>Summary functions</h1>
+<div id="length" class="section level3">
+<h3>length</h3>
+<p><strong><em>returns the length of an R object</em></strong></p>
+<p>Note - it includes missing values…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">3</span>)
+<span class="kw">length</span>(ages)</code></pre></div>
+<pre><code>[1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">19</span>)
+<span class="kw">length</span>(heights)</code></pre></div>
+<pre><code>[1] 6</code></pre>
+</div>
+<div id="sum" class="section level3">
+<h3>sum()</h3>
+<p><strong><em>calculate the total of a numeric vector</em></strong></p>
+<p><code>sum()</code> returns the arithmetic sum of its argument(s). If there is any missing data it will return <code>NA</code> unless told to remove missing data first with <code>na.rm = TRUE</code>. To find the total length of R’s built in Rivers dataset…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(rivers)</code></pre></div>
+<pre><code>[1] 83357</code></pre>
+<p>And if there’s missing data…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nums &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">6</span>)
+<span class="kw">sum</span>(nums)</code></pre></div>
+<pre><code>[1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(nums, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>[1] 16</code></pre>
+<p>To count only non-missing data use <code>sum(!is.na())</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">19</span>)
+<span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(heights))</code></pre></div>
+<pre><code>[1] 4</code></pre>
+<p>The <code>!is.na()</code> is counted as <code>1</code> for every value that isn’t missing and <code>sum</code> adds them up.</p>
+</div>
+</div>
+<div id="data-summary" class="section level1">
+<h1>Data Summary</h1>
 </div>
 <div id="plotting" class="section level1">
 <h1>Plotting</h1>
-</div>
-<div id="summary-statistics" class="section level1">
-<h1>summary statistics</h1>
 </div>
 <div id="statistical-tests" class="section level1">
 <h1>Statistical tests</h1>
