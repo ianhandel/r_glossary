@@ -88,7 +88,7 @@ c(1, 5, 6, 7) %>%
 ```
 
 
-
+-----
 
 # Data import
 
@@ -106,6 +106,7 @@ mydata <- read_excel("my_excel_spreadsheet.xlsx",
 ```
 
 
+
 # Data tidying and manipulation
 
 ### rename()
@@ -118,6 +119,8 @@ mydata <- mydata %>%
   rename(glucose = `Glucose level(mg/L`,
          better = silly_long_name_thats_a_pain_to_type)
 ```
+
+-----
 
 ### select()
 ___select columns and change column order___
@@ -143,6 +146,8 @@ new_data
 
 See [here in R4DS](http://r4ds.had.co.nz/transform.html#select-columns-with-select) for more details.
 
+-----
+
 # Summary functions
 
 ### length
@@ -157,6 +162,17 @@ length(ages)
 heights = c(12, 15, 17, NA, NA, 19)
 length(heights)
 ```
+
+To count only non-missing data use ```sum(!is.na())```...
+
+```{r}
+heights = c(12, 15, 17, NA, NA, 19)
+sum(!is.na(heights))
+```
+
+The ```!is.na()``` is counted as ```1``` for every value that isn't missing and ```sum``` adds them up.
+
+-----
 
 ### sum()
 ___calculate the total of a numeric vector___
@@ -175,17 +191,11 @@ sum(nums)
 sum(nums, na.rm = TRUE)
 ```
 
+-----
 
 
 
-To count only non-missing data use ```sum(!is.na())```...
 
-```{r}
-heights = c(12, 15, 17, NA, NA, 19)
-sum(!is.na(heights))
-```
-
-The ```!is.na()``` is counted as ```1``` for every value that isn't missing and ```sum``` adds them up.
 
 
 

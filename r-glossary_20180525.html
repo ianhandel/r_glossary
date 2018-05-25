@@ -294,6 +294,7 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <span class="st">  </span><span class="kw">mean</span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">print</span>()</code></pre></div>
 <pre><code>[1] 4.75</code></pre>
+<hr />
 </div>
 </div>
 <div id="data-import" class="section level1">
@@ -317,6 +318,7 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mydata &lt;-<span class="st"> </span>mydata <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">rename</span>(<span class="dt">glucose =</span> <span class="st">`</span><span class="dt">Glucose level(mg/L</span><span class="st">`</span>,
          <span class="dt">better =</span> silly_long_name_thats_a_pain_to_type)</code></pre></div>
+<hr />
 </div>
 <div id="select" class="section level3">
 <h3>select()</h3>
@@ -343,6 +345,7 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 10 a4 quattro  2008    20
 # ... with 224 more rows</code></pre>
 <p>See <a href="http://r4ds.had.co.nz/transform.html#select-columns-with-select">here in R4DS</a> for more details.</p>
+<hr />
 </div>
 </div>
 <div id="summary-functions" class="section level1">
@@ -357,6 +360,12 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">19</span>)
 <span class="kw">length</span>(heights)</code></pre></div>
 <pre><code>[1] 6</code></pre>
+<p>To count only non-missing data use <code>sum(!is.na())</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">19</span>)
+<span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(heights))</code></pre></div>
+<pre><code>[1] 4</code></pre>
+<p>The <code>!is.na()</code> is counted as <code>1</code> for every value that isn’t missing and <code>sum</code> adds them up.</p>
+<hr />
 </div>
 <div id="sum" class="section level3">
 <h3>sum()</h3>
@@ -370,11 +379,7 @@ x &lt;-<span class="st"> </span><span class="kw">mean</span>(x)
 <pre><code>[1] NA</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(nums, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>[1] 16</code></pre>
-<p>To count only non-missing data use <code>sum(!is.na())</code>…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights =<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">17</span>, <span class="ot">NA</span>, <span class="ot">NA</span>, <span class="dv">19</span>)
-<span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(heights))</code></pre></div>
-<pre><code>[1] 4</code></pre>
-<p>The <code>!is.na()</code> is counted as <code>1</code> for every value that isn’t missing and <code>sum</code> adds them up.</p>
+<hr />
 </div>
 </div>
 <div id="data-summary" class="section level1">
