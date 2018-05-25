@@ -1,0 +1,111 @@
+---
+title: "R Glossary for RDSVS MSc's"
+author: "RDSVS R Team"
+date: "2018-05-25"
+output: 
+  html_document: 
+    highlight: haddock
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
+
+# Introduction
+
+# Basics
+
+### <-
+___assign___
+
+Read this as 'gets' so the following code to put create an object with the name ```num``` reads as `num gets 99`...
+
+```{r, eval=FALSE}
+num <- 99
+```
+-----
+
+### print()
+___print___
+
+This function 'prints' out its arguments to the console or document. Code typed into the console will print automatically so the following give the same result...
+
+```{r}
+print(999)
+```
+
+```{r}
+999
+```
+-----
+
+### c()
+___combine___
+
+This function combines it's arguments to make a single set or in R language a 'vector'...
+
+```{r}
+numbers <- c(1, 4, 6, 2)
+numbers
+```
+-----
+
+### %>% 
+___the pipe___
+
+This operator takes the output of the code before it and 'pipes' it into the first argument of the next function. So the following two chunks of code do the same thing...
+
+```{r}
+x <- c(1, 5, 6, 7)
+x <- mean(x)
+print(x)
+```
+
+(You need to load the 'tidyverse' to use the pipe)
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r, eval = FALSE}
+library(tidyverse)
+```
+
+
+```{r}
+c(1, 5, 6, 7) %>% 
+  mean() %>% 
+  print()
+```
+
+
+
+
+# Data import
+
+The easiest way, at first, to import data is to use RStudio's helpers in the environment tab. Here you can click on 'Import Dataset' and then find the file you want to import, set some options and RStudio will generate the R code that you need to copy into your R script. Later you may want to just write the import code directly - it's not too hard. Here are the main functions you'll use...
+
+### read_excel
+___Import an Excel spreadsheet___
+
+This function needs the '''readxl''' library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, inforamtion about column names and types.
+
+```{r, eval = FALSE}
+mydata <- read_excel("my_excel_spreadsheet.xlsx",
+                     sheet = "main-results")
+```
+
+
+# Data tidying
+
+# Data manipulation
+
+# Plotting
+
+# summary statistics
+
+# Statistical tests
+
+# Statistical models
