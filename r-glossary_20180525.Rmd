@@ -203,6 +203,18 @@ sum(nums, na.rm = TRUE)
 
 # Plotting
 
+Cuurently plotting functions here are confined to ggplot2 (part of the Tidyverse set of packages).
+
+### ggplot()
+___Set up a ggplot2 plot___
+
+This function initiates the block of components that make a ggplot2 plot. Run  on it's own it just creates a blank plotting canvas...
+
+```{r}
+ggplot(mpg)
+```
+
+
 # Statistical tests
 
 # Statistical models
