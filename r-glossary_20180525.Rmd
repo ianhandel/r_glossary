@@ -412,7 +412,7 @@ ggplot(mpg) +
        colour = "Manufacturer")
  ```
  
-## facet_wrap() &facet_grid()
+## facet_wrap() & facet_grid()
  ___divide a plot into sub-plots by one or more catergorical vaiables__
  
  These functions allow a plot to be divided into smaller sub-plot panels by one or more categorical (factor) variables. ```facet_wrap()``` creates a sub-plot for each combination of variable sif two are used. ```facet_grid()``` forms a two by two grid witjh one categorical variable horziontally and the other vertically. Comapre the following three sets of code and plots..
