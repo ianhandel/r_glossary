@@ -24,6 +24,8 @@ Most of the examples will run as they either don't need any data loaded or use b
 
 We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online.
 
+
+
 # Basics
 
 ## <-
