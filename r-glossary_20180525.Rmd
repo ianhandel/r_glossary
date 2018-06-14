@@ -26,8 +26,8 @@ We'll include links to further resources where approporiate. Including [R for Da
 
 # Basics
 
-### <-
-___assign___
+## <-
+___assign a value to an object___
 
 Read this as 'gets' so the following code to put create an object with the name ```num``` reads as `num gets 99`...
 
@@ -36,8 +36,8 @@ num <- 99
 ```
 -----
 
-### print()
-___print___
+## print()
+___print an object___
 
 This function 'prints' out its arguments to the console or document. Code typed into the console will print automatically so the following give the same result...
 
@@ -50,8 +50,8 @@ print(999)
 ```
 -----
 
-### c()
-___combine___
+## c()
+___combine elements into a vector___
 
 This function combines it's arguments to make a single set or in R language a 'vector'...
 
@@ -61,7 +61,7 @@ numbers
 ```
 -----
 
-### %>% 
+## %>% 
 ___the pipe___
 
 This operator takes the output of the code before it and 'pipes' it into the first argument of the next function. In standard R to square root some numbers then add them up then round the answer we'd do this...
@@ -102,7 +102,7 @@ x
 
 The easiest way, at first, to import data is to use RStudio's helpers in the environment tab. Here you can click on 'Import Dataset' and then find the file you want to import, set some options and RStudio will generate the R code that you need to copy into your R script. Later you may want to just write the import code directly - it's not too hard. Here are the main functions you'll use...
 
-### read_excel
+## read_excel
 ___Import an Excel spreadsheet___
 
 This function needs the '''readxl''' package to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, information about column names and types and codes for missing data. The following code reads in the "main-results" sheet from a spreadsheet called "my_excel_spreadsheet.xlsx" and treats "*" as issing data. Note that the file will need to be in the same folder/directory as your project. If not you'll need to include the "path" to the file in the filename section. 
@@ -113,7 +113,7 @@ mydata <- read_excel("my_excel_spreadsheet.xlsx",
                      na = "*")
 ```
 
-### read_csv
+## read_csv
 ___Import from a comma-separated value file___
 
 This function needs the ```readr``` package to be loaded. It's part of the tidyverse and will load with the core tidyverse packages using ```library(tidyverse)```. The default options for the function are nornmally fine. You can optionally tell the function to treat somehting as 'missing data'. To import a csv file called "mydata.csv" in your project directory and treat any cells with "*" as missing use...
@@ -122,14 +122,14 @@ This function needs the ```readr``` package to be loaded. It's part of the tidyv
 mydata <- readr::read_csv("mydata.csv", na = "*")
 ```
 
-### importing other formats
+## importing other formats
 
 R can import a wide variety of data formats. The Environment > Import tab in RStudio can partially automate import for Excel, csv, SPSS, SAS and Stata data. Also see the [import section in R for Datascience](http://r4ds.had.co.nz/data-import.html). R also has the ability to connect to a wide range of databases, web sites and other datasources. That's all rather beyond the scope of this glossary but web searches will generally point you towards help.
 
 
 # Data tidying and manipulation
 
-### rename()
+## rename()
 ___rename colums in a data.frame___
 
 Imported data may have column names that are overly long, messy or contain characters that upset R. You can refer to 'upsetting' columns by putting backticks (`) around them but it's neater to rename columns to make them sensible. So if a data.frame, ```mydata``` had columns including ```Glucose level(mg/L)``` and ```silly_long_name_thats_a_pain_to_type``` we can rename them like this...
@@ -142,7 +142,7 @@ mydata <- mydata %>%
 
 -----
 
-### select()
+## select()
 ___select columns and change column order___
 
 The ```select()``` verb lets us choose or drop columns in a dataframe and change their order.
@@ -169,7 +169,7 @@ See [here in R4DS](http://r4ds.had.co.nz/transform.html#select-columns-with-sele
 
 # Summary functions
 
-### length()
+## length()
 ___returns the length of an R object___
 
 Note - it includes missing values...
@@ -193,7 +193,7 @@ The ```!is.na()``` is counted as ```1``` for every value that isn't missing and 
 
 -----
 
-### sum()
+## sum()
 ___calculate the total of a numeric vector___
 
 ```sum()``` returns the arithmetic sum of its main argument(s). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the total length of R's built in Rivers dataset...
@@ -210,7 +210,7 @@ sum(nums)
 sum(nums, na.rm = TRUE)
 ```
 
-### mean() & median()
+## mean() & median()
 ___calculate the arithmetic mean or median of a numeric vector___
 
 ```mean()``` returns the arithemtic mean of its main argument(s). ```median()``` returns the median (middle value). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the mean and median lengths of R's built in Rivers dataset...
@@ -220,7 +220,7 @@ mean(rivers)
 median(rivers)
 ```
 
-### sd(), var(), IQR() and range()
+## sd(), var(), IQR() and range()
 ___calculate the standard deviation, variance, inter-quartile ramge and range of a numeric vector___
 
 These functions provide measures of 'spread' or 'dispersion' of numeric data. The standard deviation is the square root of the variance. Standard deviation and variance are single numbers. IQR and range are pairs...
@@ -247,7 +247,7 @@ range(rivers)
 
 Cuurently plotting functions here are confined to ggplot2 (part of the Tidyverse set of packages). There's comprehenxive refrence available for all the function on the [ggplot website](http://ggplot2.tidyverse.org/reference/index.html) and in the reference text book for ggplot (https://www.springer.com/gb/book/9783319242750) which is available for online from the University of Edinburgh library for registered studenat and staff.
 
-### ggplot()
+## ggplot()
 ___Set up a ggplot2 plot___
 
 This function initiates the block of components that make a ggplot2 plot. Run  on it's own it just creates a blank plotting canvas...
@@ -256,7 +256,7 @@ This function initiates the block of components that make a ggplot2 plot. Run  o
 ggplot(mpg)
 ```
 
-### aes()
+## aes()
 ___Map columns in a datframe to 'aesthetics' in a ggplot___
 
 This function lets us assign dataframe columsn to the different aesthtics in the plot including the x-axis, the y-axis, colour (for points and lines), fill (for bars, tiles and ribbons), alpha (transparency), shape and size. Components of a ggplot are added together with the ```+``` symbole...
@@ -266,7 +266,7 @@ ggplot(mpg) +
   aes(x = cty, y = hwy, colour = manufacturer)
 ```
 
-### geom_point()
+## geom_point()
 ___add points to a ggplot___
 
 ```{r}
@@ -277,7 +277,7 @@ ggplot(mpg) +
 
 
 
-### geom_line() & geom_path()
+## geom_line() & geom_path()
 ___add lines to a plot___
 
 These functions add lines to a ggplot by joning up the points. ```geom_path``` does it in the order of the dataset and ```geom_line``` does it in the order along the x-axis. An example using the tidyverse built in economics dataset...
@@ -311,7 +311,7 @@ ggplot(Orange) +
   geom_line()
 ```
 
-### geom_bar()
+## geom_bar()
 ___count up categorical values and plot as bars___
 
 This function, by default, counts categorical variables (factors) and then draws a bar chart...
@@ -331,7 +331,7 @@ ggplot(mpg) +
   coord_flip()
 ```
 
-### geom_histogram()
+## geom_histogram()
 ___count numeric datya into bins and plot a histogrm___
 
 Given a numeric variable this function will generate bins (or you can give it bin numbers or widths) and will tally up the variable into the bins and then plot a histogram...
@@ -342,10 +342,16 @@ ggplot(mpg) +
   geom_histogram(binwidth = 2)
 ```
 
-### geom_boxplot(), geom_violin()
+## geom_boxplot() & geom_violin()
 ___show the distribution of numerical variables___
 
-These functions will take a numerical variable and either produce a box plot (showing median, upper and lower quartiles, range and outliers) or a 'violin-plot' which is like a two-sided histogram. They are most useful when you want to show distribution of numerical variables in a number of categories. As the data we've used for the examples has long category names we've added a ```coord_flip()``` onto each plot to rotate them. It makes the category labels much easier to read!
+These functions will take a numerical variable and either produce a box plot (showing median, upper and lower quartiles, range and outliers) or a 'violin-plot' which is like a two-sided histogram. They are most useful when you want to show distribution of numerical variables in a number of categories. As the data we've used for the examples has long category names we've shown adding a ```coord_flip()``` onto each plot to flip them. It makes the category labels much easier to read!
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer, y = cty) +
+  geom_boxplot()
+```
 
 ```{r}
 ggplot(mpg) +
@@ -371,5 +377,29 @@ ggplot(mpg) +
 ```
 
 # Statistical tests
+
+## t.test()
+___run a Student's T-Test on paired or unpaired data___
+
+### unpaired data
+To compare the means of two, indpendent groups - e.g. weights of two groups of animal seach group fed on a different diet.
+
+First some data...
+
+```{r}
+weights_data <- tibble(diet = c("A", "A", "A", "A", "A", "B", "B", "B", "B", "B"),
+                 weight = c(12, 15, 13, 16, 11, 34, 23, 15, 34, 43))
+weights_data
+```
+
+Then the T-Test
+```{r}
+t.test(weight ~ diet, data = weights_data)
+```
+
+The output includes a p-value against the null hypothesis that the mean weights of the two populations you have samples from are the same; the mean of each group and a confidence interval for the difference between the two means.
+
+
+
 
 # Statistical models
