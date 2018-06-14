@@ -257,7 +257,7 @@ div.tocify {
 <div id="section" class="section level2">
 <h2>&lt;-</h2>
 <p><strong><em>assign a value to an object</em></strong></p>
-<p>Read this as ‘gets’ so the following code to put create an object with the name <code>num</code> reads as <code>num gets 99</code>…</p>
+<p>Read this as ‘gets’ so the following code creates an object with the name <code>num</code>. It reads as <code>num gets 99</code>…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">num &lt;-<span class="st"> </span><span class="dv">99</span></code></pre></div>
 <hr />
 </div>
@@ -283,7 +283,11 @@ numbers</code></pre></div>
 <div id="section-1" class="section level2">
 <h2>%&gt;%</h2>
 <p><strong><em>the pipe</em></strong></p>
-<p>This operator takes the output of the code before it and ‘pipes’ it into the first argument of the next function. In standard R to square root some numbers then add them up then round the answer we’d do this…</p>
+<p>This operator takes the output of the code before it and ‘pipes’ it into the first argument of the next function.</p>
+<p>The pipe isn’t built into R, if you load the ‘tidyverse’ set of packages you’ll be able to use it…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Why do we need it?</p>
+<p>In standard R to square root some numbers then add them up then round the answer we’d do this…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.1</span>, <span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">7.5</span>)
 x1 &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)
 x2 &lt;-<span class="st"> </span><span class="kw">sum</span>(x1)
@@ -291,9 +295,13 @@ x3 &lt;-<span class="st"> </span><span class="kw">round</span>(x2)
 
 x3</code></pre></div>
 <pre><code>[1] 9</code></pre>
-<p>The pipe isn’t built into R, if you load the ‘tidyverse’ set of packages you’ll be able to use it…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<p>So to do the same with the pipe we can ‘plumb’ output form one function into the next…</p>
+<p>Or this…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">sum</span>(<span class="kw">sqrt</span>(<span class="kw">c</span>(<span class="fl">1.1</span>, <span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">7.5</span>))))
+
+x</code></pre></div>
+<pre><code>[1] 9</code></pre>
+<p>The first is long-winded, the second rather confusing with all the nested brackets.</p>
+<p>To do the same with the pipe we can ‘plumb’ output form one function into the next…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.1</span>, <span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">7.5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">sqrt</span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">sum</span>() <span class="op">%&gt;%</span><span class="st"> </span>
@@ -301,6 +309,7 @@ x3</code></pre></div>
 
 x</code></pre></div>
 <pre><code>[1] 9</code></pre>
+<p>We think this is more elegant and easier to follow as a ‘recipe’.</p>
 <hr />
 </div>
 </div>

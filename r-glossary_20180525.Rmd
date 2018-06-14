@@ -29,7 +29,7 @@ We'll include links to further resources where approporiate. Including [R for Da
 ## <-
 ___assign a value to an object___
 
-Read this as 'gets' so the following code to put create an object with the name ```num``` reads as `num gets 99`...
+Read this as 'gets' so the following code creates an object with the name ```num```. It reads as `num gets 99`...
 
 ```{r, eval=FALSE}
 num <- 99
@@ -64,16 +64,7 @@ numbers
 ## %>% 
 ___the pipe___
 
-This operator takes the output of the code before it and 'pipes' it into the first argument of the next function. In standard R to square root some numbers then add them up then round the answer we'd do this...
-
-```{r}
-x <- c(1.1, 5.2, 6.3, 7.5)
-x1 <- sqrt(x)
-x2 <- sum(x1)
-x3 <- round(x2)
-
-x3
-```
+This operator takes the output of the code before it and 'pipes' it into the first argument of the next function.
 
 The pipe isn't built into R, if you load the 'tidyverse' set of packages you'll be able to use it...
 ```{r, include=FALSE}
@@ -84,7 +75,30 @@ library(tidyverse)
 library(tidyverse)
 ```
 
-So to do the same with the pipe we can 'plumb' output form one function into the next...
+Why do we need it?
+
+In standard R to square root some numbers then add them up then round the answer we'd do this...
+
+```{r}
+x <- c(1.1, 5.2, 6.3, 7.5)
+x1 <- sqrt(x)
+x2 <- sum(x1)
+x3 <- round(x2)
+
+x3
+```
+
+Or this...
+
+```{r}
+x <- round(sum(sqrt(c(1.1, 5.2, 6.3, 7.5))))
+
+x
+```
+
+The first is long-winded, the second rather confusing with all the nested brackets.
+
+To do the same with the pipe we can 'plumb' output form one function into the next...
 
 ```{r}
 x <- c(1.1, 5.2, 6.3, 7.5) %>% 
@@ -95,6 +109,7 @@ x <- c(1.1, 5.2, 6.3, 7.5) %>%
 x
 ```
 
+We think this is more elegant and easier to follow as a 'recipe'.
 
 -----
 
