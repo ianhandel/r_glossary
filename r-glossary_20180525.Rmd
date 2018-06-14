@@ -269,6 +269,8 @@ ggplot(mpg) +
 ## geom_point()
 ___add points to a ggplot___
 
+Used to make sactterplots.
+
 ```{r}
 ggplot(mpg) +
   aes(x = cty, y = hwy, colour = manufacturer) +
@@ -375,6 +377,24 @@ ggplot(mpg) +
   geom_violin(scale = "width") +
   coord_flip()
 ```
+
+## labs()
+___add titles and label text to a ggplot___
+
+Allows you to add titles, subtitles, captions and label any aestheics you have used including x & y axes and colour / fill...
+
+```{r}
+ggplot(mpg) +
+  aes(x = cty, y = hwy, colour = manufacturer) +
+  geom_point() +
+  labs(title = "Fuel efficiency of Cars",
+       subtitle = "Data from 'mpg' dataset",
+       caption = "By RDSVS R Team",
+       x = "City mpg",
+       y = "Highway mpg",
+       colour = "Manufacturer")
+ ```
+
 
 # Statistical tests
 
