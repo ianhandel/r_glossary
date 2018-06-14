@@ -11,15 +11,16 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = "")
+knitr::opts_chunk$set(echo = TRUE, comment = "", fig.height = 5, fig.width = 6)
 ```
 
 # Introduction
 <span style="color:red">Some introduction and use text</span>
 
-Where possible we'll include examples that you can run with R's built in data files.
+Many functions need packages that are loaded when you run ```library(tidyverse)```. <span style="color:red">How do we show that need?</span>
 
-We'll show that examples can be run by <span style="color:red"> how can we show that they are runnable?</span>
+
+Most of the examples will run as they either don't need any data loaded or use built in datasets. Th efucntions that import data won't run as they are shown as they would need to have Excel or other files availabel to read in!
 
 We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online and <span style="color:red">Hadley's ggplot book or maybe the ggplot2 website would be better</span>. 
 
@@ -63,15 +64,18 @@ numbers
 ### %>% 
 ___the pipe___
 
-This operator takes the output of the code before it and 'pipes' it into the first argument of the next function. So the following two chunks of code do the same thing...
+This operator takes the output of the code before it and 'pipes' it into the first argument of the next function. In standard R to square root some numbers then add them up then round the answer we'd do this...
 
 ```{r}
-x <- c(1, 5, 6, 7)
-x <- mean(x)
-print(x)
+x <- c(1.1, 5.2, 6.3, 7.5)
+x1 <- sqrt(x)
+x2 <- sum(x1)
+x3 <- round(x2)
+
+x3
 ```
 
-(You need to load the 'tidyverse' to use the pipe)
+The pipe isn't built into R, if you load the 'tidyverse' set of packages you'll be able to use it...
 ```{r, include=FALSE}
 library(tidyverse)
 ```
@@ -80,11 +84,15 @@ library(tidyverse)
 library(tidyverse)
 ```
 
+So to do the same with the pipe we can 'plumb' output form one function into the next...
 
 ```{r}
-c(1, 5, 6, 7) %>% 
-  mean() %>% 
-  print()
+x <- c(1.1, 5.2, 6.3, 7.5) %>% 
+  sqrt() %>% 
+  sum() %>% 
+  round()
+
+x
 ```
 
 
@@ -97,7 +105,7 @@ The easiest way, at first, to import data is to use RStudio's helpers in the env
 ### read_excel
 ___Import an Excel spreadsheet___
 
-This function needs the '''readxl''' library to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, information about column names and types and codes for missing data. The following code reads in the "main-results" sheet from a spreadsheet called "my_excel_spreadsheet.xlsx" and treats "*" as issing data. Note that the file will need to be in the same folder/directory as your project. If not you'll need to include the "path" to the file in the filename section. 
+This function needs the '''readxl''' package to be loaded. You give it the filename (or path), the sheet name (or number) and optionally other arguments such as the number of lines to skip, information about column names and types and codes for missing data. The following code reads in the "main-results" sheet from a spreadsheet called "my_excel_spreadsheet.xlsx" and treats "*" as issing data. Note that the file will need to be in the same folder/directory as your project. If not you'll need to include the "path" to the file in the filename section. 
 
 ```{r, eval = FALSE}
 mydata <- read_excel("my_excel_spreadsheet.xlsx",
@@ -105,6 +113,18 @@ mydata <- read_excel("my_excel_spreadsheet.xlsx",
                      na = "*")
 ```
 
+### read_csv
+___Import from a comma-separated value file___
+
+This function needs the ```readr``` package to be loaded. It's part of the tidyverse and will load with the core tidyverse packages using ```library(tidyverse)```. The default options for the function are nornmally fine. You can optionally tell the function to treat somehting as 'missing data'. To import a csv file called "mydata.csv" in your project directory and treat any cells with "*" as missing use...
+
+```{r, eval = FALSE}
+mydata <- readr::read_csv("mydata.csv", na = "*")
+```
+
+### importing other formats
+
+R can import a wide variety of data formats. The Environment > Import tab in RStudio can partially automate import for Excel, csv, SPSS, SAS and Stata data. Also see the [import section in R for Datascience](http://r4ds.had.co.nz/data-import.html). R also has the ability to connect to a wide range of databases, web sites and other datasources. That's all rather beyond the scope of this glossary but web searches will generally point you towards help.
 
 
 # Data tidying and manipulation
@@ -143,14 +163,13 @@ new_data
 ```
 
 
-
 See [here in R4DS](http://r4ds.had.co.nz/transform.html#select-columns-with-select) for more details.
 
 -----
 
 # Summary functions
 
-### length
+### length()
 ___returns the length of an R object___
 
 Note - it includes missing values...
@@ -177,7 +196,7 @@ The ```!is.na()``` is counted as ```1``` for every value that isn't missing and 
 ### sum()
 ___calculate the total of a numeric vector___
 
-```sum()``` returns the arithmetic sum of its argument(s). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the total length of R's built in Rivers dataset...
+```sum()``` returns the arithmetic sum of its main argument(s). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the total length of R's built in Rivers dataset...
 
 ```{r}
 sum(rivers)
@@ -191,6 +210,29 @@ sum(nums)
 sum(nums, na.rm = TRUE)
 ```
 
+### mean() & median()
+___calculate the arithmetic mean or median of a numeric vector___
+
+```mean()``` returns the arithemtic mean of its main argument(s). ```median()``` returns the median (middle value). If there is any missing data it will return ```NA``` unless told to remove missing data first with ```na.rm = TRUE```. To find the mean and median lengths of R's built in Rivers dataset...
+
+```{r}
+mean(rivers)
+median(rivers)
+```
+
+### sd(), var(), IQR() and range()
+___calculate the standard deviation, variance, inter-quartile ramge and range of a numeric vector___
+
+These functions provide measures of 'spread' or 'dispersion' of numeric data. The standard deviation is the square root of the variance. Standard deviation and variance are single numbers. IQR and range are pairs...
+
+```{r}
+sd(rivers)
+var(rivers)
+IQR(rivers)
+range(rivers)
+```
+
+
 -----
 
 
@@ -203,7 +245,7 @@ sum(nums, na.rm = TRUE)
 
 # Plotting
 
-Cuurently plotting functions here are confined to ggplot2 (part of the Tidyverse set of packages).
+Cuurently plotting functions here are confined to ggplot2 (part of the Tidyverse set of packages). There's comprehenxive refrence available for all the function on the [ggplot website](http://ggplot2.tidyverse.org/reference/index.html) and in the reference text book for ggplot (https://www.springer.com/gb/book/9783319242750) which is available for online from the University of Edinburgh library for registered studenat and staff.
 
 ### ggplot()
 ___Set up a ggplot2 plot___
@@ -212,6 +254,92 @@ This function initiates the block of components that make a ggplot2 plot. Run  o
 
 ```{r}
 ggplot(mpg)
+```
+
+### aes()
+___Map columns in a datframe to 'aesthetics' in a ggplot___
+
+This function lets us assign dataframe columsn to the different aesthtics in the plot including the x-axis, the y-axis, colour (for points and lines), fill (for bars, tiles and ribbons), alpha (transparency), shape and size. Components of a ggplot are added together with the ```+``` symbole...
+
+```{r}
+ggplot(mpg) +
+  aes(x = cty, y = hwy, colour = manufacturer)
+```
+
+### geom_point()
+___add points to a ggplot___
+
+```{r}
+ggplot(mpg) +
+  aes(x = cty, y = hwy, colour = manufacturer) +
+  geom_point()
+```
+
+
+
+### geom_line() & geom_path()
+___add lines to a plot___
+
+These functions add lines to a ggplot by joning up the points. ```geom_path``` does it in the order of the dataset and ```geom_line``` does it in the order along the x-axis. An example using the tidyverse built in economics dataset...
+
+```{r}
+ggplot(economics) +
+  aes(x = pop, y = unemploy) +
+  geom_line()
+```
+
+If you have several groups in a dataset you might need to add 'groups' as an aesthtic so you get a line per group. Using R's `Orange' dataset on growth of 5 orange trees....
+
+```{r}
+Orange %>% 
+  head()
+```
+
+If we plot this without groups our result looks odd..
+
+```{r}
+ggplot(Orange) +
+  aes(x = age, y = circumference) +
+  geom_line()
+```
+
+Adding a 'groups' aesthetic sorts it out.
+
+```{r}
+ggplot(Orange) +
+  aes(x = age, y = circumference, group = Tree) +
+  geom_line()
+```
+
+### geom_bar()
+___count up categorical values and plot as bars___
+
+This function, by default, counts categorical variables (factors) and then draws a bar chart...
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer) +
+  geom_bar()
+```
+
+Bar charts can be easier to read if rotated using ```coord_flip()```...
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer) +
+  geom_bar() +
+  coord_flip()
+```
+
+### geom_histogram()
+___count numeric datya into bins and plot a histogrm___
+
+Gien a numeric variable this function will generate bins (or you can give it bin numbers or widths) and will tally up the variable into the bins and then plot a histogram...
+
+```{r}
+ggplot(mpg) +
+  aes(x = hwy) +
+  geom_histogram(binwidth = 2)
 ```
 
 
