@@ -463,7 +463,7 @@ Then the T-Test
 t.test(weight ~ diet, data = weights_data)
 ```
 
-The output includes a p-value against the null hypothesis that the mean weights of the two populations you have samples from are the same; the mean of each group and a confidence interval for the difference between the two means.
+The output includes a p-value against the null hypothesis that the mean weights of the two populations you have samples from are the same; the T-statistic, the degress of freedom; the mean of each group and a confidence interval for the difference between the two means.
 
 
 
