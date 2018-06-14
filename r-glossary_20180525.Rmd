@@ -14,12 +14,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = "", fig.height = 5, fig.width = 6)
 ```
 
-# Introduction
-Many functions need packages that are loaded when you run ```library(tidyverse)```. If sme example code doesn't run make sure you have the tidyverse loaded.
+# How to use this glossary
+
+If you know the function name you need help on you can simply search for it in the document using your browser's search function (command-F on a Mac, ctrl-F on a PC). Otherwise the glossary is divided into sections with a table of contents top left. Clicking on a main section in the table of contents will expand its sub sections.
+
+Many functions in this glossary need packages that are loaded when you run ```library(tidyverse)```. We'd advise loading the tidyverse routinely at the start of all of your R / RMarkdown scripts for now.
 
 Most of the examples will run as they either don't need any data loaded or use built in datasets. The fucntions that import data won't run as they are shown as they would need to have Excel or other files availabel to read in!
 
-We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online and <span style="color:red">Hadley's ggplot book or maybe the ggplot2 website would be better</span>. 
+We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online.
 
 # Basics
 
