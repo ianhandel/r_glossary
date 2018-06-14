@@ -15,12 +15,9 @@ knitr::opts_chunk$set(echo = TRUE, comment = "", fig.height = 5, fig.width = 6)
 ```
 
 # Introduction
-<span style="color:red">Some introduction and use text</span>
+Many functions need packages that are loaded when you run ```library(tidyverse)```. If sme example code doesn't run make sure you have the tidyverse loaded.
 
-Many functions need packages that are loaded when you run ```library(tidyverse)```. <span style="color:red">How do we show that need?</span>
-
-
-Most of the examples will run as they either don't need any data loaded or use built in datasets. Th efucntions that import data won't run as they are shown as they would need to have Excel or other files availabel to read in!
+Most of the examples will run as they either don't need any data loaded or use built in datasets. The fucntions that import data won't run as they are shown as they would need to have Excel or other files availabel to read in!
 
 We'll include links to further resources where approporiate. Including [R for Data Science](http://r4ds.had.co.nz) which is available online and <span style="color:red">Hadley's ggplot book or maybe the ggplot2 website would be better</span>. 
 
