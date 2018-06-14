@@ -334,7 +334,7 @@ ggplot(mpg) +
 ### geom_histogram()
 ___count numeric datya into bins and plot a histogrm___
 
-Gien a numeric variable this function will generate bins (or you can give it bin numbers or widths) and will tally up the variable into the bins and then plot a histogram...
+Given a numeric variable this function will generate bins (or you can give it bin numbers or widths) and will tally up the variable into the bins and then plot a histogram...
 
 ```{r}
 ggplot(mpg) +
@@ -342,6 +342,33 @@ ggplot(mpg) +
   geom_histogram(binwidth = 2)
 ```
 
+### geom_boxplot(), geom_violin()
+___show the distribution of numerical variables___
+
+These functions will take a numerical variable and either produce a box plot (showing median, upper and lower quartiles, range and outliers) or a 'violin-plot' which is like a two-sided histogram. They are most useful when you want to show distribution of numerical variables in a number of categories. As the data we've used for the examples has long category names we've added a ```coord_flip()``` onto each plot to rotate them. It makes the category labels much easier to read!
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer, y = cty) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer, y = cty) +
+  geom_violin() +
+  coord_flip()
+```
+
+```geom_violin``` has many options see [here](http://ggplot2.tidyverse.org/reference/geom_violin.html). Setting the scale argument to "width" makes all the 'violins' have the same width irrespective of the number of observations
+
+```{r}
+ggplot(mpg) +
+  aes(x = manufacturer, y = cty) +
+  geom_violin(scale = "width") +
+  coord_flip()
+```
 
 # Statistical tests
 
